@@ -1,9 +1,20 @@
+"""
+Plot Functions that helps to plot different purposes
+"""
+
 import numpy as np
 from sklearn.metrics import confusion_matrix, roc_curve, auc
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 def plot_confusion_matrix(model, y_true, y_pred, classes):
+    """
+    Plot Confusion Matrix for machine learning result
+    :param model: machine learning model
+    :param y_true: Real Target Value
+    :param y_pred: Prediction Target Value
+    :param classes: Classes defined
+    """
     conf_matrix = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(8, 6))
     sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',
@@ -15,6 +26,15 @@ def plot_confusion_matrix(model, y_true, y_pred, classes):
 
 
 def plot_roc_curve(model1, model2, y_test, scores_model1, scores_model2, threshold):
+    """
+    Plot ROC Curve for 2 models
+    :param model1:
+    :param model2:
+    :param y_test:
+    :param scores_model1:
+    :param scores_model2:
+    :param threshold:
+    """
     fpr1, tpr1, _ = roc_curve(y_test, scores_model1)
     roc_auc1 = auc(fpr1, tpr1)
 
@@ -36,8 +56,12 @@ def plot_roc_curve(model1, model2, y_test, scores_model1, scores_model2, thresho
 
 
 def plot_returns(data):
+    """
+    Plot Scenarios Return Result for the data
+    :param data:
+    :return:
+    """
     plt.figure(figsize=(12, 8))
-
     # Plotting each scenario
     plt.plot(data['DateTime'], data['cumulative_returns_scenario1'], label='Either Deep Learning or Random Forest')
     plt.plot(data['DateTime'], data['cumulative_returns_scenario2'], label='Both Deep Learning and Random Forest')
@@ -59,6 +83,12 @@ def plot_returns(data):
 
 
 def plot_var_subplots(data, confidence_level=0.95):
+    """
+    Plot Value-At-Risk and Conditional Value-At-Risk
+    :param data:
+    :param confidence_level:
+    :return:
+    """
     # Define the scenarios
     scenarios = [
         'cumulative_returns_scenario1',
@@ -99,6 +129,16 @@ def plot_var_subplots(data, confidence_level=0.95):
     plt.show()
 
 def plot_best_threshold_results(model, thresholds, precision_0, precision_1, recall_0, recall_1):
+    """
+    Plot Scatter Plots for different threshold using a grid search method
+    :param model:
+    :param thresholds:
+    :param precision_0:
+    :param precision_1:
+    :param recall_0:
+    :param recall_1:
+    :return:
+    """
     plt.figure(figsize=(10, 6))
     for threshold, p0, p1, r0, r1 in zip(thresholds, precision_0, precision_1, recall_0, recall_1):
         plt.scatter(p0 * p1, r0 * r1)

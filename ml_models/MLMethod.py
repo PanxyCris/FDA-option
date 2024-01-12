@@ -1,4 +1,8 @@
 class MLMethod():
+    """
+    Abstract Class for Machine Learning Method
+    """
+
     def train_model(self, X_train, y_train, n_estimators=100, random_state=42):
         raise NotImplementedError("Subclasses should implement this method.")
 

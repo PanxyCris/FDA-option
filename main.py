@@ -61,8 +61,10 @@ def label_prediction(model1, model2, features, return_column):
 
 
 if __name__ == "__main__":
+    # Defined machine learning features
     features = ['volatility_atr', 'volume_adi', 'momentum_rsi', 'trend_macd', 'volume_obv', 'momentum_roc',
                 'momentum_wr']
+    # Defined Whether Matching Returns Threshold or Not(If higher or lower than a return value)
     return_column = 'Vol_Returns_1'
     # Find Best Threshold
     model1 = DeepLearningMethod()

@@ -6,6 +6,9 @@ import yfinance as yf
 from utils.date_util import DateUtilUSA
 
 class Option():
+    """
+    Class for define an option object
+    """
     def __init__(self):
         pass
 

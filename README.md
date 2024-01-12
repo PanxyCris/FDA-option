@@ -10,3 +10,7 @@ Python environment.
 
 ## Installation
     pip install -r requirements.txt
+
+## Run
+The entry is `main.py`, it includes the steps from the dataset, identification features and target values,
+training and evaluation.

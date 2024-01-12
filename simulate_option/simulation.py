@@ -16,6 +16,10 @@ def read_list_option(type='all'):
 
 
 def simulate_option_result():
+    """
+    Simulating Option trading Strategies
+    :return:
+    """
     all_data = pd.read_csv('files/datasource/pharm_v1_predicted.csv')
     weekly_list = read_list_option('weekly')
     monthly_list = read_list_option('monthly')
@@ -54,8 +58,3 @@ def simulate_option_result():
             all_data.at[j, f'cumulative_returns_scenario{i + 1}'] = balances[i] / 10000 - 1
     plot_returns(all_data)
     all_data.to_csv('files/datasource/returns.csv')
-    # balance_list.append(balance / 10000 - 1)
-    # returns = balance / 10000 - 1
-    # print(row['Ticker'], row['DateTime'], balance, returns)
-    # print(balance_list)
-    # print(np.mean(balance_list))
